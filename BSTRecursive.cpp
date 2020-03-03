@@ -174,16 +174,16 @@ struct binarySearchTree{
         return temp;
     }
 
-    int* sort(int* arr,int size, node* root){
+    void sort(int* arr,int size, node* root,int* sortedarray){
         //insert all ints from array
         fromArray(arr, size, root);
         //now make an array out of inorder traversal
-        int* newArray;
+        //int* newArray;
         for(int i = 0; i < size; i++){
-            newArray[i] = findMinRec(this->root);
+            sortedarray[i] = findMinRec(this->root);
             deleteRec(findMinRec(this->root), this->root);
         }
-        return newArray;
+        //return sortedarray;
     }
 
     void fromArray(int* array, int size, node* root){
@@ -202,7 +202,8 @@ int main(){
     binarySearchTree Poopy;
     int size = 7;
     int inputArray[size] = {5,3,7,2,4,6,9};
-    int* sortedArray = Poopy.sort(inputArray, size, Poopy.root);
+    int sortedArray[size];
+    Poopy.sort(inputArray, size, Poopy.root,sortedArray);
     for(int i = 0; i < size; i++){
         cout << sortedArray[i] << endl;
     }
